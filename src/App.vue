@@ -14,24 +14,23 @@
           size="64"
         ></v-avatar>
 
-        <div>john@vuetifyjs.com</div>
+        <div>{{userName}}</div>
       </v-sheet>
 
       <v-divider></v-divider>
 
       <v-list>
         <v-list-item
-          v-for="[icon, text, to] in links"
-          :key="icon"
-          :to="to"
-          link
+          v-for=" item in links"
+          :key="item.icon"
+          :to="item.to"
         >
           <v-list-item-icon>
-            <v-icon>{{ icon }}</v-icon>
+            <v-icon>{{ item.icon }}</v-icon>
           </v-list-item-icon>
 
           <v-list-item-content>
-            <v-list-item-title>{{ text }}</v-list-item-title>
+            <v-list-item-title>{{ item.title }}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -48,19 +47,43 @@
         fluid
       >       
       <router-view></router-view>
+      
       </v-container>
     </v-main>
+    <v-footer app >
+        <Footer />
+    </v-footer >
   </v-app>
 </template>
 
 <script>
-  export default {
+import { checkToken } from '@/api/login'
+import Footer  from './components/Footer';
+  export default {    
+    components: {
+      Footer
+    },
+    mounted:function() {
+      this.getUserName();
+    },
     data: () => ({
+      userName:'',
       drawer: null,
       links: [
-        ['mdi-inbox-arrow-down', '主页', '/'],
-        ['mdi-send', '关于' ,'/about'],
+        {icon: 'mdi-inbox-arrow-down', title: '主页', to: '/' },
+        {icon: 'mdi-inbox-arrow-down', title: '登录', to: '/login' },
+        {icon: 'mdi-send', title: '关于', to: '/about'},        
       ],
     }),
+    methods: {
+      getUserName() {
+        checkToken()
+        .then(res => {
+          console.log(res.data);
+          this.userName = res.data.userName
+        })
+
+      }
+    }
   }
 </script>
