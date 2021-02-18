@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { checkToken } from '@/api/login'
+import { checkToken } from '@/api/user'
 
 export default {
   data: () => ({

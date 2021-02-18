@@ -9,7 +9,7 @@
                         <v-form ref="form">
                             <v-text-field
                             label="账号"
-                            v-model="email"
+                            v-model="username"
                             required
                             append-icon="fa-info-circle"
                             ></v-text-field>
@@ -44,18 +44,69 @@
             </v-flex>
           </v-layout>
        </v-container>
+       <v-snackbar
+        v-model="snackbar"
+        :vertical="vertical"
+        >
+      {{ message }}
+      <template v-slot:action="{ attrs }">
+        <v-btn
+          color="indigo"
+          text
+          v-bind="attrs"
+          @click="snackbar = false"
+        >
+          关闭
+        </v-btn>
+      </template>
+    </v-snackbar>
     </div>
 </template>
 
 <script>
+import { logon } from '@/api/user'
+import { md5 } from '@/utils/md5'
 export default {
     data: () => ({
-      email: '',
-      password: '',
-      rePassword: ''
+        snackbar: false,
+        message: '',
+        vertical: true,
+        username: '',
+        password: '',
+        rePassword: ''
     }),
     methods: {
         submit () {
+
+            if (this.username === ""){
+                this.showMsg("账号不能为空。");
+                return;
+            }
+            
+            if (this.password!== this.rePassword) {
+                this.showMsg("两次密码不一致");
+                return;
+            }
+
+
+            logon({ password:md5(this.password),userName: this.username})
+            .then(res => {
+                if (res.code == 200) {
+                    this.showMsg("注册成功");                    
+                    var that = this;
+                    setTimeout(function (){
+                        that.$router.push('/login');
+                    },"2000");
+                    
+                }else{
+                    this.showMsg(res.msg);
+                }
+                
+            });
+        },
+        showMsg(msg){
+            this.message = msg;
+            this.snackbar = true;
         }
     }
 }

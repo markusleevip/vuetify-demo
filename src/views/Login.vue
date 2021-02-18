@@ -57,8 +57,9 @@
 
 <script>
 
-import { login } from '@/api/login'
+import { login } from '@/api/user'
 import { setToken } from '@/utils/auth'
+import { md5 } from '@/utils/md5'
 window.axios = require('axios');
 export default {
     
@@ -72,7 +73,8 @@ export default {
     methods: {
         submit () {
             console.log('VUE_APP_BASE_API='+process.env.VUE_APP_BASE_API);
-            login({ password:this.password,userName: this.username})
+
+            login({ password:md5(this.password),userName: this.username})
             .then(res => {
                 console.log("333");
                 console.log(res.data);

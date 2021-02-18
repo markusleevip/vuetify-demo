@@ -57,7 +57,7 @@
 </template>
 
 <script>
-import { checkToken } from '@/api/login'
+import { checkToken } from '@/api/user'
 import Footer  from './components/Footer';
   export default {    
     components: {

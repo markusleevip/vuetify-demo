@@ -8,6 +8,14 @@ export const login = (data) => {
     })
 }
 
+
+export const logon = (data) => {
+    return service({
+        url: "/logon",
+        method: 'post',
+        data
+    })
+}
 export const checkToken = () => {
     return service({
         url: "/checkToken",
