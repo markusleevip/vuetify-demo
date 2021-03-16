@@ -4,7 +4,7 @@
       v-model="drawer"
       app
     >
-      <v-sheet
+    <v-sheet
         color="grey lighten-4"
         class="pa-4"
       >
@@ -13,12 +13,8 @@
           color="grey darken-1"
           size="64"
         ></v-avatar>
-
-        <div>{{userName}}</div>
+        <div>{{ userName }}</div>
       </v-sheet>
-
-      <v-divider></v-divider>
-
       <v-list>
         <v-list-item
           v-for=" item in links"
@@ -33,7 +29,7 @@
             <v-list-item-title>{{ item.title }}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-      </v-list>
+      </v-list>      
     </v-navigation-drawer>
     <v-app-bar app>
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
@@ -57,8 +53,9 @@
 </template>
 
 <script>
-import { checkToken } from '@/api/user'
 import Footer  from './components/Footer';
+import { checkToken } from '@/api/user'
+
   export default {    
     components: {
       Footer
@@ -67,12 +64,13 @@ import Footer  from './components/Footer';
       this.getUserName();
     },
     data: () => ({
-      userName:'',
       drawer: null,
+      userName: '',
       links: [
-        {icon: 'mdi-inbox-arrow-down', title: '主页', to: '/' },
-        {icon: 'mdi-inbox-arrow-down', title: '登录', to: '/login' },
-        {icon: 'mdi-send', title: '关于', to: '/about'},        
+        {icon: 'mdi-home', title: '主页', to: '/' },
+        {icon: 'mdi-login', title: '登录', to: '/login' },
+        {icon: 'mdi-account', title: '我的简历', to: '/my/resume' },
+        {icon: 'mdi-comment-text', title: '关于', to: '/about'},
       ],
     }),
     methods: {
@@ -84,6 +82,7 @@ import Footer  from './components/Footer';
         })
 
       }
+      
     }
   }
 </script>

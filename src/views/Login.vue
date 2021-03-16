@@ -76,24 +76,18 @@ export default {
 
             login({ password:md5(this.password),userName: this.username})
             .then(res => {
-                console.log("333");
-                console.log(res.data);
-                console.log(res.code);
                 if (res.code == 200) {
                     this.showMsg("登录成功");
                     setToken(res.data.token);
                     var that = this;
                     setTimeout(function (){
-                        that.$router.push('/');
+                        // that.$router.push('/');
+                        that.$router.push({path:'/', params: {userName: 'test'}});
                     },"2000");
                     
                 }else{
                     this.showMsg(res.msg);
-                }
-                console.log("登录成功");
-                
-                console.log(res.data.userName);                
-                console.log("444");
+                }                
             });
         },
         showMsg(msg){

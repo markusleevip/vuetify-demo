@@ -28,6 +28,12 @@ const routes = [
     name: 'Logon',
     component: () => import('../views/Logon.vue')
   }
+  ,
+  {
+    path: '/my/resume',
+    name: 'MyResume',
+    component: () => import('../views/my/Resume.vue')
+  }
 ]
 
 const router = new VueRouter({
