@@ -6,8 +6,16 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    userName : "",
+    avatarTitle : ""
   },
   mutations: {
+    setUserName(state,userName) {
+      state.userName = userName;
+    },
+    setAvatarTitle(state, value) {
+      state.avatarTitle = value;
+    }
   },
   actions: {
   },

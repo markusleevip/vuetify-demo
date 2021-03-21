@@ -58,7 +58,7 @@
 <script>
 
 import { login } from '@/api/user'
-import { setToken } from '@/utils/auth'
+import { setToken,setUserName,getAvatarTitle } from '@/utils/auth'
 import { md5 } from '@/utils/md5'
 window.axios = require('axios');
 export default {
@@ -79,6 +79,9 @@ export default {
                 if (res.code == 200) {
                     this.showMsg("登录成功");
                     setToken(res.data.token);
+                    setUserName(res.data.userName);
+                    this.$store.commit('setUserName',res.data.userName);                    
+                    this.$store.commit('setAvatarTitle',getAvatarTitle());
                     var that = this;
                     setTimeout(function (){
                         // that.$router.push('/');

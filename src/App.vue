@@ -10,10 +10,10 @@
       >
         <v-avatar
           class="mb-4"
-          color="grey darken-1"
+          color="teal darken-1"
           size="64"
-        ></v-avatar>
-        <div>{{ userName }}</div>
+        ><span class="white--text headline">{{ avatarTitle }} </span></v-avatar>
+        <div>{{ localUserName }}</div>
       </v-sheet>
       <v-list>
         <v-list-item
@@ -54,14 +54,22 @@
 
 <script>
 import Footer  from './components/Footer';
-import { checkToken } from '@/api/user'
+import { getAvatarTitle ,getLocalUserName } from '@/utils/auth'
 
   export default {    
     components: {
       Footer
     },
     mounted:function() {
-      this.getUserName();
+      this.loadData();
+    },
+    computed: {
+      localUserName() {       
+        return this.$store.state.userName;
+      },
+      avatarTitle() {
+        return this.$store.state.avatarTitle;
+      }
     },
     data: () => ({
       drawer: null,
@@ -74,12 +82,31 @@ import { checkToken } from '@/api/user'
       ],
     }),
     methods: {
-      getUserName() {
-        checkToken()
-        .then(res => {
-          console.log(res.data);
-          this.userName = res.data.userName
-        })
+     
+      loadData() {
+        
+        if (this.$store.state.userName==""){
+          var tempUserName = getLocalUserName();            
+            if (tempUserName!=""){
+              this.$store.commit('setUserName',tempUserName)
+              this.userName = tempUserName;
+            }
+        }
+
+        if (this.$store.state.avatarTitle == "") {
+          var tempTitle = getAvatarTitle();
+          if (tempTitle !="") {
+            this.$store.commit('setAvatarTitle',tempTitle);
+          }
+        }
+
+        // };
+        // checkToken()
+        // .then(res => {
+        //   console.log(res.data);
+        //   alert(getAvatarTitle());
+        //   this.userName = res.data.userName
+        // })
 
       }
       
