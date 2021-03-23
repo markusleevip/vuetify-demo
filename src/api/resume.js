@@ -7,12 +7,18 @@ export const myResume = () => {
     })
 }
 
-
 export const myResumeSave = (data) => {
     return service({
         url: "/my/resume/save",
         method: 'put',
         data
+    })
+}
+
+export const getResume = (resumeid) => {
+    return service({
+        url: "/show/resume/"+resumeid,
+        method: 'get'
     })
 }
 

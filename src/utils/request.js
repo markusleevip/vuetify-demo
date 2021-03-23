@@ -43,12 +43,10 @@ service.interceptors.response.use(
      * You can also judge the status by HTTP Status Code
      */
     response => {
-      console.log("response232");
       console.log(response.data.msg);      
       return response.data
     },
     error => {
-      console.log("errdddd")
       if (error.message === 'Network Error') {        
         return
       }

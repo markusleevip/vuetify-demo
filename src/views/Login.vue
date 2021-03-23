@@ -67,6 +67,7 @@ export default {
         snackbar: false,
         message: '',
         vertical: true,
+        show1: false, 
         username: '',
         password: ''
     }),
@@ -84,7 +85,6 @@ export default {
                     this.$store.commit('setAvatarTitle',getAvatarTitle());
                     var that = this;
                     setTimeout(function (){
-                        // that.$router.push('/');
                         that.$router.push({path:'/', params: {userName: 'test'}});
                     },"2000");
                     
