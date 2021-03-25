@@ -4,6 +4,10 @@
 [https://github.com/markusleevip/jobathome-godemo](https://github.com/markusleevip/jobathome-godemo)
 
 ## 视频教程
+[Go+Vue+Vuetify实战项目P6-生成分享二维码](https://www.bilibili.com/video/BV1CK411c7Go/)
+
+[Go+Vue+Vuetify实战项目P5-Vuex保存数据](https://www.bilibili.com/video/BV1rZ4y1w7LC/)
+
 [Go+Vue+Vuetify实战项目P4-密码加盐+生成QR二维码](https://www.bilibili.com/video/BV1v5411P7MM/)
 
 [Go+Vue+Vuetify实战项目P3-账号注册登录GORM+MYSQL](https://www.bilibili.com/video/BV1d54y1h7Gc/)
