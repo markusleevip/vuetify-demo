@@ -86,7 +86,7 @@ export default {
                     var that = this;
                     setTimeout(function (){
                         that.$router.push({path:'/', params: {userName: 'test'}});
-                    },"2000");
+                    },"1000");
                     
                 }else{
                     this.showMsg(res.msg);

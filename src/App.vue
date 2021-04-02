@@ -13,7 +13,7 @@
           color="teal darken-1"
           size="64"
         ><span class="white--text headline">{{ avatarTitle }} </span></v-avatar>
-        <div>{{ localUserName }}</div>
+        <div>{{ localUserName }}<v-icon>angle-down</v-icon></div>
       </v-sheet>
       <v-list>
         <v-list-item

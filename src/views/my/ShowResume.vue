@@ -16,14 +16,11 @@
             max-width="128"   
             v-bind:src="resumeQrImg" 
           ></v-img>
-   
       </v-col>
     </v-row>    
     <div>    
     </div>
-    
   </v-form>
-  
 </template>
 <script>
 import { getResume } from '@/api/resume'
@@ -45,12 +42,11 @@ import { getResume } from '@/api/resume'
         loadInfo() {
             getResume(this.$route.query.resumeId)
             .then(res => {
-                console.log(res.data);
                 if (res.code==200) {
                   this.content = res.data.content;
                   this.resumeId = res.data.resumeId;
                   this.resumeQrImg = process.env.VUE_APP_BASE_API+"resumeQr/"+this.resumeId
-                }                
+                }
             });
         }
     }

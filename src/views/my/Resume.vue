@@ -10,10 +10,14 @@
       sm="6"
       class="py-2">
       <v-textarea v-model="content" 
+     v-show="isEdit"       
     auto-grow
     placeholder="请输入内容">
     </v-textarea>
-
+    <p @click="changeState"     
+      v-show="!isEdit"
+    >{{ content}}
+      </p>
     <v-checkbox
       v-model="isOpen"
       :label="`是否公开`" 
@@ -25,6 +29,7 @@
           multiple>
           <v-btn
             color="primary"
+            :disabled="!isEdit"
               @click="saveContent"
             >保存</v-btn>
             <v-btn
@@ -55,18 +60,22 @@ import { myResume,myResumeSave } from '@/api/resume'
       resumeId: '',
       name: '',
       isOpen: false,
+      isEdit: false,
 
     }),
     methods: {
         loadInfo() {
             myResume()
             .then(res => {
-                console.log(res.data);
                 if (res.code==200) {
-                  this.content = res.data.content;
-                  this.resumeId = res.data.resumeId;
-                  this.isOpen = res.data.isOpen;
-                }                
+                  if (res.data!=null){
+                    this.content = res.data.content;
+                    this.resumeId = res.data.resumeId;
+                    this.isOpen = res.data.isOpen;
+                  }else {
+                    this.isEdit = true;
+                  }
+                }
             }, reason => {
               this.$router.push({path:'/login'});
             });
@@ -77,13 +86,16 @@ import { myResume,myResumeSave } from '@/api/resume'
                 if (res.code == 200) {
                     alert("保存成功");
                     this.resumeId = res.data.resumeId; 
+                    this.changeState()
                 }else{
                     alert(res.msg);
                 }                
             });          
         },
+        changeState(){
+          this.isEdit = !this.isEdit
+        },
         sharing(){
-          //       this.$router.push({ name: 'news', params: { userId: 123 }});
            this.$router.push({path:'/show/resume',query: {resumeId: this.resumeId}});
         }
     }
