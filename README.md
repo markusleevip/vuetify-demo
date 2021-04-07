@@ -4,6 +4,8 @@
 [https://github.com/markusleevip/jobathome-godemo](https://github.com/markusleevip/jobathome-godemo)
 
 ## 视频教程
+[Go+Vue+Vuetify实战项目P7+后端好友列表+翻页功能+SSL证书](https://www.bilibili.com/video/BV1cU4y1h7Mc/)
+
 [Go+Vue+Vuetify实战项目P6-生成分享二维码](https://www.bilibili.com/video/BV1CK411c7Go/)
 
 [Go+Vue+Vuetify实战项目P5-Vuex保存数据](https://www.bilibili.com/video/BV1rZ4y1w7LC/)
