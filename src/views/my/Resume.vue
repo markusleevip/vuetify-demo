@@ -49,8 +49,7 @@
 <script>
 import { myResume,myResumeSave } from '@/api/resume'
 
-  export default {
-    
+  export default {    
     mounted:function() {
         this.loadInfo();
     },

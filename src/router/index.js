@@ -40,6 +40,18 @@ const routes = [
     name: 'ShowResume',
     component: () => import('../views/my/ShowResume.vue')
   }
+  ,
+  {
+    path: '/show/fans',
+    name: 'ShowFans',
+    component: () => import('../views/my/Fans.vue')
+  }
+  ,
+  {
+    path: '/show/follow',
+    name: 'ShowFollow',
+    component: () => import('../views/my/Follow.vue')
+  }
 ]
 
 const router = new VueRouter({

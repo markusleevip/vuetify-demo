@@ -4,17 +4,48 @@
       v-model="drawer"
       app
     >
-    <v-sheet
-        color="grey lighten-4"
-        class="pa-4"
+    <v-row
+      class="mb-6"
+    >
+    <v-col
+        sm="5"
+        md="6"
       >
         <v-avatar
           class="mb-4"
           color="teal darken-1"
           size="64"
-        ><span class="white--text headline">{{ avatarTitle }} </span></v-avatar>
-        <div>{{ localUserName }}<v-icon>angle-down</v-icon></div>
-      </v-sheet>
+        >
+        <!-- <span class="white--text headline">{{ avatarTitle }} </span> -->
+        <v-img src="http://127.0.0.1:8001/res/avatar1.png" />
+        </v-avatar>
+    </v-col>
+    <v-col
+        sm="5"
+        md="6"
+      >
+        {{ localUserName }}
+      
+    </v-col>
+    </v-row>
+    <v-row
+      class="mb-6"
+      no-gutters
+    >
+    <v-col
+        sm="5"
+        md="6"
+      >
+       <v-btn @click="goFollow">关注</v-btn>
+    </v-col>
+    <v-col
+        sm="5"
+        md="6"
+      >
+       <v-btn @click="goFans">粉丝</v-btn>
+      
+    </v-col>
+    </v-row>
       <v-list>
         <v-list-item
           v-for=" item in links"
@@ -99,16 +130,13 @@ import { getAvatarTitle ,getLocalUserName } from '@/utils/auth'
             this.$store.commit('setAvatarTitle',tempTitle);
           }
         }
-
-        // };
-        // checkToken()
-        // .then(res => {
-        //   console.log(res.data);
-        //   alert(getAvatarTitle());
-        //   this.userName = res.data.userName
-        // })
-
-      }
+      },      
+      goFollow(){
+        this.$router.push({path:'/show/follow'});
+      },
+      goFans(){
+        this.$router.push({path:'/show/fans'});
+      },
       
     }
   }
