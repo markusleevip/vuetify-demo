@@ -16,8 +16,7 @@
           color="teal darken-1"
           size="64"
         >
-        <!-- <span class="white--text headline">{{ avatarTitle }} </span> -->
-        <v-img src="http://127.0.0.1:8001/res/avatar1.png" />
+        <span class="white--text headline">{{ avatarTitle }} </span>
         </v-avatar>
     </v-col>
     <v-col
@@ -65,7 +64,7 @@
     <v-app-bar app>
       <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
 
-      <v-toolbar-title>Welcome to this site.</v-toolbar-title>
+      <v-toolbar-title>最新   热门</v-toolbar-title>
     </v-app-bar>
 
     <v-main>

@@ -79,8 +79,8 @@ import {myFans,addFollow} from '@/api/friend'
         },
         watch: {
             page:function () {
-		      this.loadInfo();
-		    }
+		          this.loadInfo();
+		        }
         }
   }
 

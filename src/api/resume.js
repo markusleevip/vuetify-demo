@@ -22,3 +22,10 @@ export const getResume = (resumeid) => {
     })
 }
 
+export const list = (data) => {
+    return service({
+        url: "/list",
+        method: 'post',
+        data
+    })
+}
