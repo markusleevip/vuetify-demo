@@ -20,7 +20,6 @@
             <v-img src="https://cdn.vuetifyjs.com/images/lists/3.jpg"></v-img>
           </v-list-item-avatar>
           <v-list-item-content >
-              <v-list-item-title v-text="item.uid"></v-list-item-title>
             <a >                    
                 <v-list-item-title  @click="follow(item.uid)" v-html="item.nickName"></v-list-item-title>
                 <v-list-item-subtitle  @click="goResume(item.resumeId)" v-html="item.content"></v-list-item-subtitle>
@@ -69,13 +68,14 @@ import {addFollow} from '@/api/friend'
            this.$router.push({path:'/show/resume',query: {resumeId: resumeId}});
         },
         follow(fUid){
-          alert("确定要关注吗？"+fUid)
-          addFollow({fUid: fUid})
-          .then(res => {
-              if (res.code==200) {
-                  alert("关注成功。")
-              }
-          });
+          if (confirm("确定要取关吗？") == true) {
+            addFollow({fUid: fUid})
+            .then(res => {
+                if (res.code==200) {
+                    alert("关注成功。")
+                }
+            });
+          }
         }
     },
     watch: {

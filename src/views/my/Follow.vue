@@ -16,13 +16,10 @@
           :key="i"
         >
           <v-list-item-avatar>
-            <v-img src="http://127.0.0.1:8001/res/avatar1.png"></v-img>
+            <v-img src="https://cdn.vuetifyjs.com/images/lists/3.jpg"></v-img>
           </v-list-item-avatar>
           <v-list-item-content>
             <v-list-item-title v-text="item.nickName"></v-list-item-title>
-          </v-list-item-content>
-          <v-list-item-content>
-            <v-list-item-title v-text="item.fUid"></v-list-item-title>
           </v-list-item-content>
           <v-list-item-content class="text-right">
             <v-list-item-title @click="unFollow(item.fUid)" >取关</v-list-item-title>
@@ -39,7 +36,7 @@
 </div>
 </template>
 <script>
-import {myFollow} from '@/api/friend'
+import {myFollow,unFollow} from '@/api/friend'
     export default {
         mounted:function() {
             this.loadInfo();
@@ -68,7 +65,14 @@ import {myFollow} from '@/api/friend'
 
             },
             unFollow(fUid){
-                alert("确定要取关吗？"+fUid)
+                if (confirm("确定要取关吗？") == true) {
+                  unFollow({fUid: fUid})
+                  .then(res => {
+                      if (res.code==200) {
+                          alert("取关成功。")
+                      }
+                  });
+                }
             }
         },
         watch: {

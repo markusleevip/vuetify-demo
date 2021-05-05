@@ -5,6 +5,8 @@
 
 ## 视频教程
 
+[Go+Vue+Vuetify实战项目P10增加日志分割,使用go-cache,互粉判断](https://www.bilibili.com/video/BV1iQ4y1d7pv/)
+
 [Go+Vue+Vuetify实战项目P9主页内容列表，关注好友功能，增加zap日志功能](https://www.bilibili.com/video/BV1Vf4y1p7iD/)
 
 [Go+Vue+Vuetify实战项目P8添加功能显示头像 、关注列表 、粉丝列表 、添加关注、分页显示](https://www.bilibili.com/video/BV1DB4y1w7zY/)

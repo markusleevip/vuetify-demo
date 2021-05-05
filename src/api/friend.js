@@ -25,4 +25,12 @@ export const addFollow = (data) => {
     })
 }
 
+export const unFollow = (data) => {
+    return service({
+        url: "/my/follow/delete",
+        method: 'put',
+        data
+    })
+}
+
 
